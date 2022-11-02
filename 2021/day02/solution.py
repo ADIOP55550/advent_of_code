@@ -4,18 +4,24 @@
 def main():
     with open("input.txt") as f:
         lines = f.readlines()
+        aim = 0
         x = 0
-        y = 0
+        depth = 0
 
         for line in lines:
             fc = line[0]
             if fc == 'u':
-                y -= int(line[2:])
+                # up
+                aim -= int(line[2:])
             elif fc == 'd':
-                y += int(line[4:])
+                # down
+                aim += int(line[4:])
             else:
-                x += int(line[8:])
-        print(f"{x=} {y=} {x*y=}")
+                # forward
+                val = int(line[8:])
+                x += val
+                depth += aim * val
+        print(f"{x=} {depth=} {x*depth=}")
 
 if __name__ == '__main__':
     main()
